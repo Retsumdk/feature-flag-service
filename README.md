@@ -1,36 +1,52 @@
-# feature-flag-service
+# Feature Flag Service
 
-Feature flag toggle system with percentage rollouts
+[![CI](https://github.com/Retsumdk/feature-flag-service/workflows/CI/badge.svg)](https://github.com/Retsumdk/feature-flag-service/actions)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-20.x-brightgreen.svg)](https://nodejs.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+Feature flag toggle system with percentage rollouts. Control feature releases with gradual rollouts, A/B testing, and real-time toggles.
 
 ## Features
 
-- Production-ready code
-- TypeScript/Python with full type safety
-- Comprehensive error handling
-- Built with Zo Computer by The BookMaster
+- **Gradual Rollouts** — Release features to a percentage of users
+- **A/B Testing** — Test multiple variants with different user segments
+- **Real-time Toggles** — Enable/disable features without redeployment
+- **User Targeting** — Target specific users, roles, or regions
+- **Audit Trail** — Track all flag changes with timestamps and actors
 
 ## Installation
 
 ```bash
 git clone https://github.com/Retsumdk/feature-flag-service.git
 cd feature-flag-service
-bun install
+npm install
+npm run build
 ```
 
-## Usage
+## Quick Start
 
-```bash
-bun run src/index.ts --help
+```typescript
+import { FeatureFlagService } from './src';
+
+const flags = new FeatureFlagService();
+
+// Define a feature flag
+flags.define('new-checkout', {
+  enabled: true,
+  rolloutPercentage: 25,  // 25% of users
+});
+
+// Check if feature is enabled for user
+const isEnabled = await flags.isEnabled('new-checkout', { userId: 'user123' });
 ```
 
-## Configuration
+## Related Repos
 
-Create `config.json` (TypeScript) or `config.yaml` (Python) for custom settings.
+- [audit-logger](https://github.com/Retsumdk/audit-logger) — Immutable audit trail for flag changes
+- [api-key-manager](https://github.com/Retsumdk/api-key-manager) — API key management
+- [rate-limiter-middleware](https://github.com/Retsumdk/rate-limiter-middleware) — Rate limiting
 
 ## License
 
-MIT License
-
----
-
-Built by [The BookMaster](https://github.com/Retsumdk) with [Zo Computer](https://zo.computer)
+MIT License — see [LICENSE](LICENSE)
