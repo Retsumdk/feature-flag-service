@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 /**
  * feature-flag-service - Feature flag toggle system with percentage rollouts
- * Built with Zo Computer by The BookMaster
+ * Built with @Retsumdk by Retsumdk
  */
 
 import { Command } from "commander";
